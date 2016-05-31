@@ -1,0 +1,57 @@
+<ion-view>
+	<div class="bar bar-header bar-positive">
+		<h1 class="title">Kid Care</h1>
+	</div>
+	<ion-content class="has-header">
+		<form name="formRegister" ng-submit="register.submit()">
+			<div class="has-error" ng-show="formRegister.$invalid && !formRegister.$pristine || !register.emailUnique">
+				<p ng-show="!formRegister.email.$pristine && formRegister.email.$error.email">
+					Email khong dung dinh dang
+				</p>
+				<p ng-show="!formRegister.email.$pristine && formRegister.email.$error.required">
+					Email khong duoc de trong
+				</p>
+				<p ng-show="!formRegister.email.$pristine && formRegister.email.$error.maxlength">
+					Email khong the vuot qua 100 ky tu
+				</p>
+				<p ng-show="!formRegister.password.$pristine && formRegister.password.$error.required">
+					Mat khau khong duoc de trong
+				</p>
+				<p ng-show="!formRegister.password.$pristine && formRegister.password.$error.minlength">
+					Mat khau phai lon hon 4 ky tu
+				</p>
+				<p ng-show="!formRegister.password.$pristine && formRegister.password.$error.maxlength">
+					Mat khau khong the vuot qua 32 ky tu
+				</p>
+				<p ng-show="!formRegister.repeatPassword.$pristine && formRegister.repeatPassword.$error.required">
+					Nhac lai mat khau khong duoc de trong
+				</p>
+				<p ng-show="!formRegister.repeatPassword.$pristine && formRegister.repeatPassword.$error.noMatch">
+					Nhac lai mat khau khong chinh xac
+				</p>
+				<p ng-show="!register.emailUnique">
+					Email da duoc su dung
+				</p>
+			</div>
+			<div class="list">
+				<label class="item item-input">
+					<input type="email" maxlength="100" placeholder="Email" name="email" ng-model="register.user.email" ng-change="register.checkEmailUnique()" required>
+				</label>
+				<label class="item item-input">
+					<input type="password" minlength="4" maxlength="32" placeholder="Mật khẩu" name="password" ng-model="register.user.password" required>
+				</label>
+				<label class="item item-input">
+					<input type="password" placeholder="Nhắc lại mật khẩu" name="repeatPassword" id="repeatPassword" ng-model="register.user.repeatPassword" repeat-password="password" required>
+				</label>
+			</div>
+			<div class="padding">
+				<button class="button button-block button-positive" ng-disabled="formRegister.$invalid || register.isLoadding">
+					Đăng ký thành viên
+				</button>
+				<p class="text-center">
+					<a ui-sref="login">Đăng nhập</a>
+				</p>
+			</div>
+		</form>
+	</ion-content>
+</ion-view>

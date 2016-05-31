@@ -1,0 +1,39 @@
+<ion-view>
+	<div class="bar bar-header bar-positive">
+		<h1 class="title">Kid Care</h1>
+	</div>
+	<ion-content class="has-header">
+		<form name="loginForm" ng-submit="login.login()">
+			<div class="has-error" ng-show="(loginForm.$invalid && !loginForm.$pristine) || !login.loginFailed">
+				<p ng-show="!loginForm.email.$pristine && loginForm.email.$error.required">
+					Email khong duoc de trong
+				</p>
+				<p ng-show="!loginForm.password.$pristine && loginForm.password.$error.required">
+					Mat khau khong duoc de trong
+				</p>
+				<p ng-show="!login.loginFailed">
+					Email hoac Mat khau khong chinh xac
+				</p>
+			</div>
+			<div class="list">
+				<label class="item item-input">
+					<input type="text" placeholder="Email" name="email" ng-model="login.user.email" required>
+				</label>
+				<label class="item item-input">
+					<input type="password" placeholder="Mật khẩu" name="password" ng-model="login.user.password" required>
+				</label>
+			</div>
+			<div class="padding">
+				<button class="button button-block button-positive" ng-disabled="loginForm.$invalid || login.isLoading">
+					Đăng nhập
+				</button>
+				<p class="text-center">
+					<a ui-sref="forgetPassword">Quên mật khẩu</a>
+				</p>
+				<p class="text-center">
+					<a ui-sref="register">Đăng ký thành viên</a>
+				</p>
+			</div>
+		</form>
+	</ion-content>
+</ion-view>
